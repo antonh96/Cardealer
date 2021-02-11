@@ -11,7 +11,6 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import ProtectedRoute from './pages/ProtectedRoute';
 import Profile from './pages/Profile';
-import $ from "jquery";
 
 class App extends Component {
   constructor(props) {
@@ -67,7 +66,7 @@ class App extends Component {
   }
 
   loginUser = async (username, password) => {
-    const resp = fetch('/login', { 
+    const resp = await fetch('/login', { 
       method: 'POST' ,  
       headers: {
         'Content-Type': 'application/json',
@@ -138,7 +137,6 @@ class App extends Component {
       <div className="background">
         <div className="container_app">
           <Switch>
-              <Route path='/' component={loginElem}></Route>
               <Route path='/start' component={loginElem}></Route>
               <ProtectedRoute path='/view_carmodels' component={viewCarmodelsElem}/>
               <ProtectedRoute path='/contact' component={contactElem}/>

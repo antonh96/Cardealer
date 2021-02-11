@@ -215,7 +215,7 @@ app.post('/create_user' , function(req, res)  {
             } else  {
                 message= "OK";
                 bcrypt.hash(password, saltRounds, (err, hash) => {
-                    let new_user = { name, id, email: username, password: password};
+                    let new_user = { name, id, email: username, password: hash};
                     user_collection.updateOne( { }, { $push: { users: new_user }});
                 });
                 return res.json({message: message});
